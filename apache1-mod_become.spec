@@ -60,7 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 echo "mod_%{mod_name}: This module is not turned on by default; if you're sure,"
 echo "mod_%{mod_name}: uncomment the appropriate line in Apache's config file."
 
-%preun
+%postun
 if [ "$1" = "0" ]; then
 	if [ -f /var/lock/subsys/apache ]; then
 		/etc/rc.d/init.d/apache restart 1>&2
