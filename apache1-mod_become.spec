@@ -1,6 +1,7 @@
 %define		mod_name	become
 %define 	apxs		%{_sbindir}/apxs
 Summary:	Apache module: Become Somebody
+Summary(pl):	Modu³ Apache'a: stawanie siê kim¶
 Name:		apache-mod_%{mod_name}
 Version:	1.3
 Release:	1
@@ -21,11 +22,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This module enables the web server to take on the access rights of a
-user & group, so that ~users can make available files to the web
+user & group, so that users can make available files to the web
 without having to make them readable by the world on the local file
 system. This can be useful for sites with a large number of users who
 want to apply file access controls among themselves. This module can
 also be applied to virtual hosts, directories, and locations.
+
+%description -l pl
+Ten modu³ pozwala serwerowi WWW przej±æ prawa dostêpu u¿ytkownika i
+grupy, dziêki czemu u¿ytkownicy mog± udostêpniæ pliki na WWW bez
+czynienia ich globalnie czytelnymi w lokalnym systemie plików. Mo¿e to
+byæ przydatne na dla serwerów z du¿± liczb± u¿ytkowników, którzy chc±
+kontrolowaæ dostêp do plików miêdzy sob±. Ten modu³ mo¿e byæ u¿ywany
+tak¿e z serwerami wirtualnymi, katalogami i miejscami.
 
 %prep
 %setup -q -n mod_%{mod_name}-%{version}
