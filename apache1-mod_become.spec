@@ -4,7 +4,7 @@ Summary:	Apache module: Become Somebody
 Summary(pl):	Modu³ Apache'a: stawanie siê kim¶
 Name:		apache1-mod_%{mod_name}
 Version:	1.3
-Release:	1.4
+Release:	2
 License:	?
 Group:		Networking/Daemons
 Source0:	http://www.snert.com/Software/mod_become/mod_become103.tgz
