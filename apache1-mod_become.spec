@@ -1,8 +1,8 @@
 %define		mod_name	become
-%define 	apxs		%{_sbindir}/apxs
+%define 	apxs		/usr/sbin/apxs1
 Summary:	Apache module: Become Somebody
 Summary(pl):	Modu³ Apache'a: stawanie siê kim¶
-Name:		apache-mod_%{mod_name}
+Name:		apache1-mod_%{mod_name}
 Version:	1.3
 Release:	1
 License:	?
@@ -10,11 +10,13 @@ Group:		Networking/Daemons
 Source0:	http://www.snert.com/Software/mod_become/mod_become103.tgz
 # Source0-md5:	7bb1607587687dabc711b3b1903947e5
 URL:		http://www.snert.com/Software/mod_become/
-BuildRequires:	apache(EAPI)-devel
+BuildRequires:	apache1-devel
+BuildRequires:	%{apxs}
 Requires(post,preun):	%{apxs}
 Requires(post,preun):	grep
 Requires(preun):	fileutils
-Requires:	apache(EAPI)
+Requires:	apache1
+Obsoletes:	apache-mod_%{mod_name} <= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
@@ -41,7 +43,8 @@ tak¿e z serwerami wirtualnymi, katalogami i miejscami.
 
 %build
 PATH=$PATH:%{_sbindir}
-%{__make} build-dynamic
+%{__make} build-dynamic \
+	APXS=%{apxs}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -53,13 +56,15 @@ install mod_%{mod_name}.so $RPM_BUILD_ROOT%{_pkglibdir}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%{apxs} -e -a -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
+%{apxs} -e -A -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so
+echo "mod_%{mod_name}: this module is not turned on by default; if you're sure,"
+echo "mod_%{mod_name}: uncomment the appropriate line in Apache's config file"
 
 %preun
 if [ "$1" = "0" ]; then
 	%{apxs} -e -A -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
-	if [ -f /var/lock/subsys/httpd ]; then
-		/etc/rc.d/init.d/httpd restart 1>&2
+	if [ -f /var/lock/subsys/apache ]; then
+		/etc/rc.d/init.d/apache restart 1>&2
 	fi
 fi
 
