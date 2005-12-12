@@ -10,8 +10,8 @@ Group:		Networking/Daemons
 Source0:	http://www.snert.com/Software/mod_become/mod_become103.tgz
 # Source0-md5:	7bb1607587687dabc711b3b1903947e5
 URL:		http://www.snert.com/Software/mod_become/
-BuildRequires:	apache1-devel >= 1.3.33-2
 BuildRequires:	%{apxs}
+BuildRequires:	apache1-devel >= 1.3.33-2
 Requires(triggerpostun):	%{apxs}
 Requires:	apache1 >= 1.3.33-2
 Obsoletes:	apache-mod_%{mod_name} <= %{version}
@@ -76,5 +76,5 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc CHANGES.txt LICENSE.txt SECURITY.txt index.shtml notes-conf.txt
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/conf.d/*_mod_%{mod_name}.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/conf.d/*_mod_%{mod_name}.conf
 %attr(755,root,root) %{_pkglibdir}/*
