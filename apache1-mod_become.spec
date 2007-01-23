@@ -4,7 +4,7 @@ Summary:	Apache module: Become Somebody
 Summary(pl):	Modu³ Apache'a: stawanie siê kim¶
 Name:		apache1-mod_%{mod_name}
 Version:	1.3
-Release:	2
+Release:	3
 License:	?
 Group:		Networking/Daemons
 Source0:	http://www.snert.com/Software/mod_become/mod_become103.tgz
@@ -14,7 +14,7 @@ BuildRequires:	%{apxs}
 BuildRequires:	apache1-devel >= 1.3.33-2
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(triggerpostun):	%{apxs}
-Requires:	apache1 >= 1.3.33-2
+Requires:	apache1(EAPI)
 Obsoletes:	apache-mod_become <= 1.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
