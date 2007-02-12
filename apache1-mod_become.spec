@@ -1,7 +1,7 @@
 %define		mod_name	become
 %define 	apxs		/usr/sbin/apxs1
 Summary:	Apache module: Become Somebody
-Summary(pl.UTF-8):   Moduł Apache'a: stawanie się kimś
+Summary(pl.UTF-8):	Moduł Apache'a: stawanie się kimś
 Name:		apache1-mod_%{mod_name}
 Version:	1.3
 Release:	3
