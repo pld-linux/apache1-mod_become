@@ -10,7 +10,7 @@ Group:		Networking/Daemons
 Source0:	http://www.snert.com/Software/mod_become/mod_become103.tgz
 # Source0-md5:	7bb1607587687dabc711b3b1903947e5
 URL:		http://www.snert.com/Software/mod_become/
-BuildRequires:	%{apxs}
+BuildRequires:	apache1-apxs
 BuildRequires:	apache1-devel >= 1.3.33-2
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(triggerpostun):	%{apxs}
